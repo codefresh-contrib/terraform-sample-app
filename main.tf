@@ -1,22 +1,10 @@
-provider "google" {
-  project = "firstkubernetes-176201"
-  region  = "europe-west2"
-  zone    = "europe-west2-b"
+provider "aws" {
+    region="us-east-2"
 }
+resource "aws_instance" "web" {
 
-resource "google_compute_instance" "vm_instance" {
-  name         = "terraform-instance"
-  machine_type = "f1-micro"
+  ami = "ami-0b614a5d911900a9b"
 
-  boot_disk {
-    initialize_params {
-      image = "debian-cloud/debian-9"
-    }
-  }
+  instance_type = "t2.micro"
 
-  network_interface {
-    network = "default"
-  }
 }
-
-
